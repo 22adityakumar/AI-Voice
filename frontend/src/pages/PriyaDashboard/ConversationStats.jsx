@@ -15,7 +15,7 @@ function formatDuration(secs) {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
-function InfoCard({ icon: Icon, label, value, accent = '#7D9B76' }) {
+function InfoCard({ icon: Icon, label, value, accent = '#7D9B76', style }) {
   return (
     <div style={{
       background:    '#FAFAFA',
@@ -25,6 +25,8 @@ function InfoCard({ icon: Icon, label, value, accent = '#7D9B76' }) {
       display:       'flex',
       alignItems:    'center',
       gap:           10,
+      minWidth:      0,
+      ...style,
     }}>
       <div style={{ width: 32, height: 32, borderRadius: 8, background: `${accent}18`, border: `1px solid ${accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         <Icon size={15} color={accent} />

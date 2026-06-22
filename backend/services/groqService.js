@@ -372,8 +372,28 @@ async function callPriyaAgentic(sessionId, message, opts = {}) {
     }
   }
 
+  // Deterministic "student or parent?" turn. This is a FIXED early step where the weak
+  // local model most often garbles (code leaks / field dumps), so ask it directly — no
+  // LLM call: reliable, instant, and translated to the caller's language downstream.
+  // Skipped if the caller's turn actually answered it (save-guard above set caller_type)
+  // or if they asked a question (let the model handle that).
+  if (agentTools.getMissingFields({ collected })[0] === 'caller_type' && !isQuestionLike(message)) {
+    const reply = 'Lovely! Am I speaking with the student, or a parent?'
+    const updatedHistory = [...(session.agent_messages || []), { role: 'user', content: message }, { role: 'assistant', content: reply }].slice(-AGENT_HISTORY_LIMIT)
+    sessionStore.update(sessionId, { agent_messages: updatedHistory, collected })
+    const { step, step_index } = agentTools.deriveStep({ collected })
+    console.log('[GroqAgentic] deterministic caller_type question (no LLM)')
+    return { reply, step, step_index, collected }
+  }
+
   // Build the system prompt AFTER the guard so CURRENTLY COLLECTING reflects the save.
-  const systemPrompt = agentTools.buildAgenticSystemPrompt({ ...session, collected }, opts)
+  let systemPrompt = agentTools.buildAgenticSystemPrompt({ ...session, collected }, opts)
+  // Qwen3 is a reasoning model: without this it emits <think>…</think> that eats the
+  // small max_tokens budget (→ empty reply) and adds latency. "/no_think" disables it.
+  // Harmless to non-Qwen3 providers (llama/glm ignore it) if the call fails over.
+  if (/qwen3/i.test(process.env.LOCAL_AGENTIC_MODEL || '') && AGENTIC_PROVIDERS.some(p => p.name === 'local')) {
+    systemPrompt += '\n\n/no_think'
+  }
   const messages = [
     { role: 'system', content: systemPrompt },
     ...history,
@@ -399,7 +419,7 @@ async function callPriyaAgentic(sessionId, message, opts = {}) {
     const clean = stripForSpeech(s)
     if (clean.length < 2) return
     if (/[{}]|"(?:function|reason|name|arguments|field|value)"/i.test(s)) return  // leaked tool JSON — skip
-    if (agentTools.looksLikeFieldDump(clean)) return  // weak-model field dump — let the buffered guard fix it
+    if (agentTools.looksLikeFieldDump(clean) || agentTools.looksLikeCodeLeak(clean)) return  // dump/code leak — let the buffered guard fix it
     streamedSomething = true
     try { opts.onSentence(clean) } catch { /* sink error */ }
     if (clean.includes('?')) questionDone = true   // a phone reply ends at the question
@@ -572,11 +592,12 @@ async function callPriyaAgentic(sessionId, message, opts = {}) {
 
   if (!reply) reply = 'Thank you for sharing that — could you tell me a little more?'
 
-  // Weak-model guard: if the model dumped the whole field list instead of asking ONE
-  // thing, replace it with a single clean question for whatever's still missing.
-  if (agentTools.looksLikeFieldDump(reply)) {
+  // Weak-model guards: if the model dumped the whole field list, or leaked code/HTML
+  // garbage (e.g. _pb3_HtmlResponse({"html":"<p>…")), replace it with a single clean
+  // question for whatever's still missing — the caller must never hear gibberish.
+  if (agentTools.looksLikeFieldDump(reply) || agentTools.looksLikeCodeLeak(reply)) {
     const q = agentTools.defaultQuestionFor({ collected })
-    console.warn(`[GroqAgentic] field-list dump detected — replacing with: "${q}"`)
+    console.warn(`[GroqAgentic] bad reply ("${reply.slice(0, 40)}…") — replacing with: "${q}"`)
     reply = q
   }
 

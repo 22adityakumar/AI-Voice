@@ -143,10 +143,11 @@ export default function PriyaDashboard() {
 
         {/* ── Two-column main area ─────────────────────────────────────── */}
         <motion.div
+          className="priya-main-grid"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 20, marginBottom: 20, alignItems: 'start' }}
+          style={{ display: 'grid', gap: 20, marginBottom: 20, alignItems: 'start' }}
         >
           {/* LEFT — trigger call panel */}
           <TriggerCall
@@ -156,7 +157,7 @@ export default function PriyaDashboard() {
           />
 
           {/* RIGHT — live session info */}
-          <div style={{ background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 16, padding: 24, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+          <div style={{ minWidth: 0, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 16, padding: 24, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
             {/* Step progress */}
             <div style={{ marginBottom: 20 }}>
               <div style={{ fontSize: 12, fontWeight: 600, color: '#7A7A7A', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10 }}>
@@ -168,7 +169,7 @@ export default function PriyaDashboard() {
             <div style={{ height: 1, background: '#E8E8E8', marginBottom: 20 }} />
 
             {/* Stats + transcript — side by side on large screens */}
-            <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 20 }}>
+            <div className="priya-session-grid" style={{ display: 'grid', gap: 20 }}>
               <ConversationStats
                 collected={collected}
                 detectedLanguage={detectedLang}
@@ -176,7 +177,7 @@ export default function PriyaDashboard() {
                 step={step}
                 status={callStatus}
               />
-              <div>
+              <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: '#7A7A7A', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 8 }}>
                   Live Transcript
                 </div>
@@ -207,6 +208,16 @@ export default function PriyaDashboard() {
         @keyframes priyaLiveDot {
           0%, 100% { transform: scale(1);   opacity: 1; }
           50%       { transform: scale(1.4); opacity: 0.6; }
+        }
+        /* minmax(0, 1fr) lets the flexible column shrink below its content's
+           intrinsic width instead of blowing past the container (overflow). */
+        .priya-main-grid    { grid-template-columns: 320px minmax(0, 1fr); }
+        .priya-session-grid { grid-template-columns: 240px minmax(0, 1fr); }
+        @media (max-width: 1100px) {
+          .priya-session-grid { grid-template-columns: minmax(0, 1fr); }
+        }
+        @media (max-width: 880px) {
+          .priya-main-grid { grid-template-columns: minmax(0, 1fr); }
         }
       `}</style>
     </DashboardLayout>

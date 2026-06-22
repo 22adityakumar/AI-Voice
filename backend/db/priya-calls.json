@@ -1,5 +1,284 @@
 [
   {
+    "session_id": "f631dc73-ce3b-4e4c-9e2e-a51a558cc6e7",
+    "phone": "+918249776759",
+    "name": "का फुल नेम है कार्तिक",
+    "started_at": "2026-06-22T09:07:37.252Z",
+    "duration": 203,
+    "steps_completed": 4,
+    "status": "completed",
+    "detected_language": "hi-IN",
+    "collected": {
+      "name": null,
+      "marks_10": "95%",
+      "marks_inter": "86%",
+      "interest": "B.Tech",
+      "location": null,
+      "caller_type": "student",
+      "student_name": "का फुल नेम है कार्तिक"
+    },
+    "transcript": [
+      {
+        "role": "Priya",
+        "text": "Hi! I am Priya from Aditya University. Which language are you comfortable speaking in — Telugu, English, Hindi, or any other?",
+        "timestamp": "2026-06-22T09:08:18.768Z"
+      },
+      {
+        "role": "Student",
+        "text": "यस आप स्टूडेंट से बात कर रहे हो",
+        "timestamp": "2026-06-22T09:08:22.425Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Great! Now, please provide the student's name. Could you tell me their full name?",
+        "timestamp": "2026-06-22T09:08:24.187Z"
+      },
+      {
+        "role": "Student",
+        "text": "का फुल नेम है कार्तिक",
+        "timestamp": "2026-06-22T09:08:37.096Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Thank you, Kartik. Please provide the marks obtained in 10th and 12th standard. Could you give me both percentages or CGPA?",
+        "timestamp": "2026-06-22T09:08:40.226Z"
+      },
+      {
+        "role": "Student",
+        "text": "में 95 आया है, 12th में 86।",
+        "timestamp": "2026-06-22T09:09:01.381Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Got it, Kartik. And what about your 12th standard marks?",
+        "timestamp": "2026-06-22T09:09:03.548Z"
+      },
+      {
+        "role": "Student",
+        "text": "बताया ना मैंने, 86।",
+        "timestamp": "2026-06-22T09:09:18.177Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Perfect. Now, could you please tell me which course or program the student is interested in pursuing?",
+        "timestamp": "2026-06-22T09:09:21.924Z"
+      },
+      {
+        "role": "Student",
+        "text": "वो बीटेक कोर्स में इंटरेस्टेड है।",
+        "timestamp": "2026-06-22T09:09:37.677Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Understood. Could you please specify the department or specialization within B.Tech that interests you?",
+        "timestamp": "2026-06-22T09:09:41.218Z"
+      },
+      {
+        "role": "Student",
+        "text": "आप क्या क्या कोर्सेज",
+        "timestamp": "2026-06-22T09:09:58.689Z"
+      },
+      {
+        "role": "Priya",
+        "text": "I see. Please specify the department or specialization within B.Tech that interests you, for example CSE, ECE, Mechanical, etc.",
+        "timestamp": "2026-06-22T09:10:01.233Z"
+      },
+      {
+        "role": "Student",
+        "text": "आप क्या क्या कोर्स प्रोवाइड करते हैं",
+        "timestamp": "2026-06-22T09:10:20.428Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Currently, we offer several courses including B.Tech in various departments like Computer Science and Engineering (CSE), Electronics and Communication Engineering (ECE), Mechanical Engineering, among others. Could you please specify which one interests you?",
+        "timestamp": "2026-06-22T09:10:22.574Z"
+      }
+    ]
+  },
+  {
+    "session_id": "16019ee5-fccb-415b-8b02-258006a515aa",
+    "phone": "+918249776759",
+    "name": "स्टूडेंट का नेम कार्तिक है।",
+    "started_at": "2026-06-22T09:02:56.137Z",
+    "duration": 154,
+    "steps_completed": 5,
+    "status": "completed",
+    "detected_language": "hi-IN",
+    "collected": {
+      "name": null,
+      "marks_10": "78%",
+      "marks_inter": "79%",
+      "interest": "B.Tech",
+      "location": null,
+      "caller_type": "student",
+      "student_name": "स्टूडेंट का नेम कार्तिक है।",
+      "department": "Electrical Department"
+    },
+    "transcript": [
+      {
+        "role": "Priya",
+        "text": "Hi! I am Priya from Aditya University. Which language are you comfortable speaking in — Telugu, English, Hindi, or any other?",
+        "timestamp": "2026-06-22T09:03:33.487Z"
+      },
+      {
+        "role": "Student",
+        "text": "आप स्टूडेंट से बात कर रहे हैं",
+        "timestamp": "2026-06-22T09:03:36.428Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Great! Now, could you please provide the student's name?",
+        "timestamp": "2026-06-22T09:03:38.142Z"
+      },
+      {
+        "role": "Student",
+        "text": "स्टूडेंट का नेम कार्तिक है।",
+        "timestamp": "2026-06-22T09:03:51.133Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Thank you, Karthik. Please provide your 10th/SSC percentage or CGPA?",
+        "timestamp": "2026-06-22T09:03:53.698Z"
+      },
+      {
+        "role": "Student",
+        "text": "मेरा 10th क्लास है लाइक 78%।",
+        "timestamp": "2026-06-22T09:04:11.525Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Thank you. Now, could you please provide your 12th/HSC percentage?",
+        "timestamp": "2026-06-22T09:04:13.749Z"
+      },
+      {
+        "role": "Student",
+        "text": "मेरा 12th है लाइक 79।",
+        "timestamp": "2026-06-22T09:04:25.799Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Perfect, thank you. What course or program are you interested in?",
+        "timestamp": "2026-06-22T09:04:28.507Z"
+      },
+      {
+        "role": "Student",
+        "text": "मैं बीटेक कोर्स में इंटरेस्टेड हूँ।",
+        "timestamp": "2026-06-22T09:04:39.214Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Great choice, B.Tech! Now, could you please specify the department or branch of your interest?",
+        "timestamp": "2026-06-22T09:04:41.580Z"
+      },
+      {
+        "role": "Student",
+        "text": "हेलो इलेक्ट्रिकल डिपार्टमेंट में जॉइन होना चाह रही हूँ",
+        "timestamp": "2026-06-22T09:05:11.964Z"
+      },
+      {
+        "role": "Priya",
+        "text": "Excellent! We have everything we need now. Please let us know your location preference and transport needs for the campus visit, if you're interested in one. Do you prefer to stay at a hostel or use college buses?",
+        "timestamp": "2026-06-22T09:05:16.253Z"
+      }
+    ]
+  },
+  {
+    "session_id": "28783446-2eaa-4a43-b4e7-fb24b0b1ea14",
+    "phone": "+918249776759",
+    "name": "Unknown",
+    "started_at": "2026-06-22T04:39:54.529Z",
+    "duration": 28,
+    "steps_completed": 0,
+    "status": "completed",
+    "detected_language": "en-IN",
+    "collected": {
+      "name": null,
+      "marks_10": null,
+      "marks_inter": null,
+      "interest": null,
+      "location": null
+    },
+    "transcript": [
+      {
+        "role": "Priya",
+        "text": "Hi! I am Priya from Aditya University. Which language are you comfortable speaking in — Telugu, English, Hindi, or any other?",
+        "timestamp": "2026-06-22T04:40:13.874Z"
+      }
+    ]
+  },
+  {
+    "session_id": "7b851d41-98f7-4f3f-ab06-6b9674ed72cb",
+    "phone": "+918249776759",
+    "name": "Unknown",
+    "started_at": "2026-06-22T04:16:52.976Z",
+    "duration": 34,
+    "steps_completed": 0,
+    "status": "completed",
+    "detected_language": "te-IN",
+    "collected": {
+      "name": null,
+      "marks_10": null,
+      "marks_inter": null,
+      "interest": null,
+      "location": null
+    },
+    "transcript": [
+      {
+        "role": "Priya",
+        "text": "Hi! I am Priya from Aditya University. Which language are you comfortable speaking in — Telugu, English, Hindi, or any other?",
+        "timestamp": "2026-06-22T04:17:13.771Z"
+      },
+      {
+        "role": "Student",
+        "text": "తెలుగు.",
+        "timestamp": "2026-06-22T04:17:16.170Z"
+      },
+      {
+        "role": "Priya",
+        "text": "తెలుగు, మనం ప్రజేత్రంగా రద్దీవాటించబడతాయనకో. కృష్ణేటర్, మీ",
+        "timestamp": "2026-06-22T04:17:21.046Z"
+      }
+    ]
+  },
+  {
+    "session_id": "4c9e57ba-c61f-41e3-9a90-c948376ce88f",
+    "phone": "+918249776759",
+    "name": "Karthik",
+    "started_at": "2026-06-22T04:14:36.113Z",
+    "duration": 26,
+    "steps_completed": 2,
+    "status": "completed",
+    "detected_language": "te-IN",
+    "collected": {
+      "name": null,
+      "marks_10": null,
+      "marks_inter": null,
+      "interest": null,
+      "location": null,
+      "caller_type": "parent",
+      "parent_name": "Rajesh",
+      "relation": "father",
+      "student_name": "Karthik"
+    },
+    "transcript": [
+      {
+        "role": "Priya",
+        "text": "Hi! I am Priya from Aditya University. Which language are you comfortable speaking in — Telugu, English, Hindi, or any other?",
+        "timestamp": "2026-06-22T04:14:59.603Z"
+      },
+      {
+        "role": "Student",
+        "text": "తెలుగు",
+        "timestamp": "2026-06-22T04:15:01.368Z"
+      },
+      {
+        "role": "Priya",
+        "text": "None",
+        "timestamp": "2026-06-22T04:15:05.441Z"
+      }
+    ]
+  },
+  {
     "session_id": "f8756165-0fbb-4a04-85b8-929f7669e50c",
     "phone": "+918249776759",
     "name": "Unknown",
@@ -2069,55 +2348,5 @@
     "steps_completed": 11,
     "status": "completed",
     "detected_language": "pa-IN"
-  },
-  {
-    "session_id": "0e1d14d5-1413-427f-afe9-fd751a66bdd7",
-    "phone": "+918249776759",
-    "name": "Unknown",
-    "started_at": "2026-06-04T18:57:00.950Z",
-    "duration": 83,
-    "steps_completed": 1,
-    "status": "completed",
-    "detected_language": "en-IN"
-  },
-  {
-    "session_id": "f7e4e7b7-1a26-4d5e-8107-738cb75df3e2",
-    "phone": "+918249776759",
-    "name": "Unknown",
-    "started_at": "2026-06-04T18:53:35.571Z",
-    "duration": 3,
-    "steps_completed": 0,
-    "status": "completed",
-    "detected_language": "en-IN"
-  },
-  {
-    "session_id": "87bdb456-5943-455e-98ad-91c885580c22",
-    "phone": "+918249776759",
-    "name": "Unknown",
-    "started_at": "2026-06-04T18:53:05.973Z",
-    "duration": 4,
-    "steps_completed": 0,
-    "status": "completed",
-    "detected_language": "en-IN"
-  },
-  {
-    "session_id": "846ae023-814c-46f5-8324-e0f3932d09f8",
-    "phone": "+917782853453",
-    "name": "from Odisha",
-    "started_at": "2026-06-04T16:56:37.523Z",
-    "duration": 432,
-    "steps_completed": 10,
-    "status": "completed",
-    "detected_language": "od-IN"
-  },
-  {
-    "session_id": "f8595be7-f23d-409f-be68-eb2d999df64f",
-    "phone": "+917782853453",
-    "name": "Unknown",
-    "started_at": "2026-06-04T16:54:19.446Z",
-    "duration": 93,
-    "steps_completed": 0,
-    "status": "completed",
-    "detected_language": "en-IN"
   }
 ]

@@ -219,6 +219,21 @@ const SPEECH_RMS_THRESHOLD = 200   // energy above this = voice
 // Tune via SILENCE_END_MS (default 500ms). Each chunk = 20ms.
 const SILENCE_END_MS       = parseInt(process.env.SILENCE_END_MS || '500', 10)
 const SILENCE_CHUNKS_END   = Math.max(8, Math.round(SILENCE_END_MS / 20))
+// Smart endpointing: when the live transcript looks like a COMPLETE thought (ends in
+// punctuation, or ≥4 words and not on a connector), commit after a SHORTER silence —
+// so we fire sooner. Short/trailing utterances keep the full SILENCE_END_MS window so
+// we don't cut people off mid-pause. Tune the snappy threshold via SILENCE_FAST_MS.
+const SILENCE_FAST_MS      = parseInt(process.env.SILENCE_FAST_MS || '260', 10)
+const SILENCE_CHUNKS_FAST  = Math.max(6, Math.round(SILENCE_FAST_MS / 20))
+// Words that usually mean "I'm still talking" — don't fast-commit right after one.
+const CONTINUATION_RE = /\b(and|but|so|or|because|then|um|uh|like|మరియు|లేదా|కానీ|और|तो|या|कि|लेकिन)\s*$/i
+function utteranceLooksComplete(t) {
+  const s = String(t || '').trim()
+  if (!s) return false
+  if (CONTINUATION_RE.test(s)) return false               // trailing connector → likely continuing
+  if (/[.?!।]\s*$/.test(s)) return true                    // ended on sentence punctuation
+  return s.split(/\s+/).length >= 4                        // a substantial phrase
+}
 const MIN_SPEECH_CHUNKS    = 10    // need at least 200ms of voice before sending to STT
 const MAX_SPEECH_CHUNKS    = 500   // 10s max recording — enough for a full sentence with a number/score
 
@@ -326,7 +341,12 @@ class MediaSession {
         this.silenceCnt = 0
       } else {
         this.silenceCnt++
-        if (this.silenceCnt >= SILENCE_CHUNKS_END && this.speechCnt >= MIN_SPEECH_CHUNKS) {
+        // Adaptive: if the live transcript already looks like a complete thought, commit
+        // after the short window; otherwise wait the full window (don't cut them off).
+        const endThreshold = utteranceLooksComplete(this.sttStream?.transcript)
+          ? SILENCE_CHUNKS_FAST
+          : SILENCE_CHUNKS_END
+        if (this.silenceCnt >= endThreshold && this.speechCnt >= MIN_SPEECH_CHUNKS) {
           this._onEndOfSpeech()
         }
       }

@@ -75,7 +75,7 @@ export default function TranscriptViewer({ transcript = [], isWaiting = false })
               <div style={{ fontSize: 10, fontWeight: 600, color: isPriya ? '#4F664A' : '#7A7A7A', marginBottom: 3 }}>
                 {msg.role}
               </div>
-              <div style={{ fontSize: 13, color: '#2C2C2C', lineHeight: 1.5 }}>{msg.text}</div>
+              <div style={{ fontSize: 13, color: '#2C2C2C', lineHeight: 1.5, overflowWrap: 'break-word', wordBreak: 'break-word' }}>{msg.text}</div>
               <div style={{ fontSize: 10, color: '#A0A0A0', marginTop: 4, textAlign: 'right' }}>
                 {formatTime(msg.timestamp)}
               </div>

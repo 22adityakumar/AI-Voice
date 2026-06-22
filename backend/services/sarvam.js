@@ -65,11 +65,13 @@ async function transcribe(audioBuffer, languageHint = null) {
 const SPEAKERS = { Female: 'ritu', Male: 'karun' }
 
 // Style → pace + enable_preprocessing
-// pace 1.0 = normal speed; lower = slower. Kept near-normal so replies aren't long.
+// pace 1.0 = normal speed; >1 = faster, <1 = slower. Default bumped to a slightly
+// snappier 1.15; tune with TTS_PACE (e.g. 1.1 gentle, 1.25 quite fast) — no code edit.
+const TTS_PACE = parseFloat(process.env.TTS_PACE || '1.15')
 const STYLE_CONFIG = {
-  modern_colloquial: { pace: 1.0,  enable_preprocessing: true  },
-  formal:            { pace: 0.95, enable_preprocessing: false },
-  classic:           { pace: 0.9,  enable_preprocessing: false },
+  modern_colloquial: { pace: TTS_PACE, enable_preprocessing: true  },
+  formal:            { pace: 0.95,     enable_preprocessing: false },
+  classic:           { pace: 0.9,      enable_preprocessing: false },
 }
 
 // Audience → eng_interpolation_wt
