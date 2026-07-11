@@ -10,3 +10,5 @@ build/
 *.log
 backend/.env
 .env
+# Claude Code local config (permission allowlists etc.) — never commit
+.claude/
